@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44869047, g: 0.4987445, b: 0.575679, a: 1}
+  m_IndirectSpecularColor: {r: 0.44869012, g: 0.49874383, b: 0.57567805, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4601975924254360, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.54
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 4601975924254360, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -155,6 +155,23 @@ Prefab:
     - target: {fileID: 1044101032246010, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
       propertyPath: m_Name
       value: Rocket Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 82860469778350630, guid: f58afd3c30173974bb60410de4491fe5,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735453876912654, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4.451116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735453876912654, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.7916121
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735453876912654, guid: f58afd3c30173974bb60410de4491fe5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f58afd3c30173974bb60410de4491fe5, type: 2}

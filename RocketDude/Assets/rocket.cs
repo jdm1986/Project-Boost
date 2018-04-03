@@ -5,8 +5,8 @@ using UnityEngine;
 public class rocket : MonoBehaviour
 {
     private Rigidbody rigidBody;
-
     private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -25,9 +25,16 @@ public class rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBody.AddRelativeForce(Vector3.up);
-            audioSource.Play();
-            
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
+        else
+        {
+            audioSource.Stop();
+        }
+        
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward);
