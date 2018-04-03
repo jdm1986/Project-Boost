@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rocket : MonoBehaviour {
-
+public class rocket : MonoBehaviour
+{
+    private Rigidbody rigidBody;
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+	    rigidBody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +21,15 @@ public class rocket : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            print("Space pressed");
+            rigidBody.AddRelativeForce(Vector3.up);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.forward);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.back);
         }
     }
 }
