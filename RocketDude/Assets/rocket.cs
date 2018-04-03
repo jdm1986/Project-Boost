@@ -5,10 +5,13 @@ using UnityEngine;
 public class rocket : MonoBehaviour
 {
     private Rigidbody rigidBody;
+
+    private AudioSource audioSource;
 	// Use this for initialization
 	void Start ()
 	{
 	    rigidBody = GetComponent<Rigidbody>();
+	    audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +25,8 @@ public class rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBody.AddRelativeForce(Vector3.up);
+            audioSource.Play();
+            
         }
         if (Input.GetKey(KeyCode.A))
         {
