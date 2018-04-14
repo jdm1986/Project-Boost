@@ -61,4 +61,9 @@ public class rocket : MonoBehaviour
             audioSource.Stop();
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        print("Collided");
+    }
 }
