@@ -36,11 +36,11 @@ public class rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.back);
+            transform.Rotate(Vector2.left);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.forward);
+            transform.Rotate(Vector2.right);
         }
 
         rigidBody.freezeRotation = false; //resume physics control of rotation
@@ -64,6 +64,22 @@ public class rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print("Collided");
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                //do nothing
+                break;
+            case "Treat":
+                print("Yum");
+                //add 1 to wildness
+                break;
+            case "Enemy":
+                print("Dead");
+                //kill
+                break;
+            case "Default":
+                break;
+           
+        }
     }
 }
