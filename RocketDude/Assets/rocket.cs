@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+    int Health = 100;
+    public Slider healthSlider;
+    int Wildness = 100;
+    public Slider wildnessSlider;
     private Rigidbody rigidBody;
     private AudioSource audioSource;
+    private AudioSource damageClip;
 
 	// Use this for initialization
 	private void Start ()
 	{
 	    rigidBody = GetComponent<Rigidbody>();
 	    audioSource = GetComponent<AudioSource>();
+        damageClip = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -74,7 +81,13 @@ public class rocket : MonoBehaviour
                 //add 1 to wildness
                 break;
             case "Enemy":
-                print("Dead");
+                Health -= 25;
+                healthSlider.value = Health;
+                damageClip.Play();
+                if(Health == 0)
+                    {
+                    print("RIP Henry");
+                    }
                 //kill
                 break;
             case "Default":
