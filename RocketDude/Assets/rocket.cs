@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
+using UnityEngine.SceneManagement;
 
 public class rocket : MonoBehaviour
 {
@@ -81,12 +82,14 @@ public class rocket : MonoBehaviour
                 //add 1 to wildness
                 break;
             case "Enemy":
+                print("Dang");
                 Health -= 25;
-                healthSlider.value = Health;
+                //healthSlider.value = Health;
                 damageClip.Play();
                 if(Health == 0)
                     {
                     print("RIP Henry");
+                    RestartGame();
                     }
                 //kill
                 break;
@@ -94,5 +97,10 @@ public class rocket : MonoBehaviour
                 break;
            
         }
+        
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 }
