@@ -18,6 +18,10 @@ public class rocket : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource damageClip;
 
+    enum State { Alive, Dying, Transcending }
+
+    private State state = State.Alive;
+
 	// Use this for initialization
 	private void Start ()
 	{
@@ -72,27 +76,33 @@ public class rocket : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive)
+        {
+            return;
+        }
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 //do nothing
                 break;
             case "Treat":
+                state = State.Transcending;
                 print("Yum");
-                SceneManager.LoadScene(1);
+                Invoke("LoadNextScene", 3f);
                 break;
             case "Enemy":
                 damageClip.Play();
                 print("Dang");
                 Health -= 25;
                 //healthSlider.value = Health;
-                
                 if(Health == 0)
-                    {
+                {
+                    state = State.Dying;
                     print("RIP Henry");
-                    SceneManager.LoadScene(0);
+                    Invoke("RestartGame", 1f);
                     }
                 //kill
                 break;
@@ -102,6 +112,12 @@ public class rocket : MonoBehaviour
         }
         
     }
+
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
