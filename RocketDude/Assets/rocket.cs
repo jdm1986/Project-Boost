@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class rocket : MonoBehaviour
 {
+
+    //need to fix lighting bug upon level reload
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
-    int Health = 100;
+    public int Health = 100;
     public Slider healthSlider;
-    int Wildness = 100;
-    public Slider wildnessSlider;
-    private Rigidbody rigidBody;
-    private AudioSource audioSource;
-    private AudioSource damageClip;
+    public int Wildness = 100;
+    public Slider WildnessSlider;
+    public Rigidbody rigidBody;
+    public AudioSource audioSource;
+    public AudioSource damageClip;
 
 	// Use this for initialization
 	private void Start ()
@@ -79,17 +81,18 @@ public class rocket : MonoBehaviour
                 break;
             case "Treat":
                 print("Yum");
-                //add 1 to wildness
+                SceneManager.LoadScene(1);
                 break;
             case "Enemy":
+                damageClip.Play();
                 print("Dang");
                 Health -= 25;
                 //healthSlider.value = Health;
-                damageClip.Play();
+                
                 if(Health == 0)
                     {
                     print("RIP Henry");
-                    RestartGame();
+                    SceneManager.LoadScene(0);
                     }
                 //kill
                 break;
